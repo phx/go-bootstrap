@@ -13,7 +13,7 @@ fi
 BASE_URL='https://go.dev'
 HTML="$(curl -skL "${BASE_URL}/dl/")"
 DOWNLOAD_URL="${BASE_URL}$(echo "${HTML}" | grep href | grep linux | grep 'tar.gz' | head -1 | cut -d '"' -f4)"
-TMP="$(mktemp)"
+TMP="$(mktemp -d)"
 
 cd "$TMP" || exit 1
 echo "downloading golang from ${DOWNLOAD_URL}..."
