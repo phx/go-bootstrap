@@ -17,7 +17,7 @@ TMP="$(mktemp -d)"
 
 cd "$TMP" || exit 1
 echo "downloading golang from ${DOWNLOAD_URL}..."
-curl -skLo go.tar.gz "$DOWNLOAD_URL" | tar xz
+curl -skL "$DOWNLOAD_URL" | tar xz
 
 if [ ! -d go ]; then
   echo
