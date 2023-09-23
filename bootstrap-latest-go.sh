@@ -33,7 +33,7 @@ mv -v go ~/ && mkdir -p ~/go-workspace
 echo
 echo 'setting up environment variables...'
 for i in .profile .bashrc .zshrc; do
-  if [ -d "${HOME}/${i}" ]; then
+  if [ -f "${HOME}/${i}" ]; then
     echo >> "${HOME}/${i}"
     echo "export GOPATH=${HOME}/go" >> "${HOME}/${i}"
     echo "export GOWORKSPACE=${HOME}/go-workspace" >> "${HOME}/${i}"
