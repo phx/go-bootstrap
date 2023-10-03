@@ -41,7 +41,7 @@ mv -v go ~/
 
 echo
 echo 'setting up environment variables...'
-for i in profile bashrc zshrc; do
+for i in profile bashrc bash_profile zshrc; do
   if [ -e "${HOME}/.${i}" ]; then
     echo >> "${HOME}/.${i}"
     echo "export GOPATH=${HOME}/go" >> "${HOME}/.${i}"
