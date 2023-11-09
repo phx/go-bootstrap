@@ -17,7 +17,11 @@ fi
 BASE_URL='https://go.dev'
 HTML="$(curl -skL "${BASE_URL}/dl/")"
 if [ "$LINUX" = "1" ] ; then
-  DOWNLOAD_URL="${BASE_URL}$(echo "${HTML}" | grep href | grep linux | grep amd64 | grep 'tar.gz' | head -1 | cut -d '"' -f4)"
+  if uname -a | grep -q arm; then
+    DOWNLOAD_URL="${BASE_URL}$(echo "${HTML}" | grep href | grep linux | grep arm | grep -v 64 | grep 'tar.gz' | head -1 | cut -d '"' -f6)"
+  else
+    DOWNLOAD_URL="${BASE_URL}$(echo "${HTML}" | grep href | grep linux | grep amd64 | grep 'tar.gz' | head -1 | cut -d '"' -f6)"
+  fi
 elif [ "$DARWIN" = "1" ]; then
   DOWNLOAD_URL="${BASE_URL}$(echo "${HTML}" | grep href | grep darwin | grep amd64 | grep 'tar.gz' | head -1 | cut -d '"' -f6)"
 fi
